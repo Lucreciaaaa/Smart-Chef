@@ -6,7 +6,7 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 
 const Header = () => {
   return (
-    <AppBar position="sticky">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
