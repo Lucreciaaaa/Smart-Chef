@@ -1,7 +1,7 @@
 import { Box, Divider, Drawer, IconButton, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const drawerWidth = 260;
+const drawerWidth = { xs: "90vw", sm: "50vw", md: 340 };
 
 type DrawerProps = {
   openDrawer: boolean;

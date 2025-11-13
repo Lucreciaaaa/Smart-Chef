@@ -21,11 +21,11 @@ const Header = ({ onOpen }: HeaderProps) => {
         <Toolbar
           disableGutters
           sx={{
-            justifyContent: { xs: "center", sm: "space-between" },
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <Box sx={{ display: "flex", flexDirection: "row", flexGrow: 1 }}>
             <RestaurantIcon
               sx={{ display: { xs: "none", sm: "flex" }, mr: 2 }}
             />
