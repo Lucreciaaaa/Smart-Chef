@@ -4,7 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 import Header from "./Header";
 import RightDrawer from "./RightDrawer";
-import IngredientSearch from "../components/ingredient/IngredientSearch";
+import IngredientSearch from "../ingredient/IngredientSearch";
 
 type LayoutProps = {
   children?: React.ReactNode;
