@@ -40,7 +40,7 @@ export default function IngredientSearch() {
           id="ingredient-input"
           label="Choose your ingredients"
           placeholder="Type an ingredient..."
-          helperText="You can add between 3 and 10 ingredients"
+          helperText="You can add up to 10 ingredients"
           fullWidth
           size="medium"
         />
