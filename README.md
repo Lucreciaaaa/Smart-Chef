@@ -1,6 +1,8 @@
 # SmartChef, Your Personal Recipe Explorer
 
-<img src="front/src/assets/logo.png" alt="SmartChef Logo" width="150"/>
+<p align="center">
+  <img src="front/src/assets/logo.png" alt="SmartChef Logo" width="150"/>
+</p>
 
 ## Overview
 
