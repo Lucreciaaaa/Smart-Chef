@@ -20,7 +20,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <Header onOpen={handleDrawerOpen} />
+      <Header onOpenDrawer={handleDrawerOpen} />
       <RightDrawer openDrawer={open} onClose={handleDrawerClose} />
 
       {/* Main content */}

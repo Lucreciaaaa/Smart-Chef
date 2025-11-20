@@ -12,10 +12,10 @@ import HistoryIcon from "@mui/icons-material/History";
 import logo from "../../assets/logo.png";
 
 type HeaderProps = {
-  onOpen: () => void;
+  onOpenDrawer: () => void;
 };
 
-const Header = ({ onOpen }: HeaderProps) => {
+const Header = ({ onOpenDrawer }: HeaderProps) => {
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -57,7 +57,7 @@ const Header = ({ onOpen }: HeaderProps) => {
             </Typography>
           </Box>
 
-          <IconButton onClick={onOpen} color="inherit">
+          <IconButton onClick={onOpenDrawer} color="inherit">
             <HistoryIcon />
           </IconButton>
         </Toolbar>
