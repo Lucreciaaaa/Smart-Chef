@@ -12,25 +12,30 @@ import {
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 
-import paellaImage from "./paella.jpg";
 import { grey } from "@mui/material/colors";
 
-const Lchips = ["spaghetti", "tomatoes", "olive oil"];
+import { Recipe } from "../../types/recipe";
 
-export default function RecipeCard() {
+type Props = {
+  recipe: Recipe;
+};
+
+export default function RecipeCard({ recipe }: Props) {
+  const Lchips = ["spaghetti", "tomatoes", "olive oil"];
+
   return (
     <Card sx={{ maxWidth: "100%" }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="200"
-          image={paellaImage}
-          alt="Paella dish"
+          image={`http://localhost:3001/${recipe.image}`}
+          alt={recipe.title}
         />
         <CardContent>
           <Stack direction="column" gap={1}>
             <Typography gutterBottom variant="h5" component="div">
-              Paella Spaghetti
+              {recipe.title}
             </Typography>
             <Box
               display="flex"
@@ -42,21 +47,24 @@ export default function RecipeCard() {
               <Stack direction="row" gap={0.5}>
                 <AccessTimeIcon fontSize="small" sx={{ color: grey[600] }} />
                 <Typography variant="body1" color="text.secondary">
-                  30 min
+                  {recipe.cookingTime} min
                 </Typography>
               </Stack>
 
               <Stack direction="row" gap={0.5}>
                 <LocalDiningIcon fontSize="small" sx={{ color: grey[600] }} />
                 <Typography variant="body1" color="text.secondary">
-                  4 servings
+                  {recipe.servings} servings
                 </Typography>
               </Stack>
             </Box>
 
-            <Typography variant="body2" color="text.secondary">
-              Recipe overview ...
-            </Typography>
+            {recipe.overview && (
+              <Typography variant="body2" color="text.secondary">
+                {recipe.overview}
+              </Typography>
+            )}
+
             <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1 }}>
               {Lchips.map((chip) => (
                 <Chip

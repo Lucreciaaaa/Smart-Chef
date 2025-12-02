@@ -7,7 +7,7 @@ import Header from "./Header";
 import RightDrawer from "./RightDrawer";
 import IngredientSearch from "../ingredient/IngredientSearch";
 import IngredientChip from "../ingredient/IngredientChip";
-import RecipeCard from "../recipe/RecipeCard";
+import RecipesPage from "../recipe/RecipePage";
 
 type LayoutProps = {
   children?: React.ReactNode;
@@ -41,7 +41,7 @@ export default function Layout({ children }: LayoutProps) {
         <IngredientChip />
 
         <Box display="flex" flexDirection="row" mt={3}>
-          <RecipeCard />
+          <RecipesPage />
         </Box>
       </Stack>
     </Box>

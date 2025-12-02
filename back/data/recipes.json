@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "title": "Cranberry Smoothie",
+    "overview": "Orange cranberry smoothie perfect for winter",
+    "image": "/images/cranberry-smoothie.jpg",
+    "cookingTime": 20,
+    "servings": 2
+  }
+]
