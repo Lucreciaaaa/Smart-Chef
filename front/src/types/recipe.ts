@@ -1,6 +1,6 @@
-export type IngredientQuantity = {
+export type Ingredient = {
   name: string;
-  quantity: string;
+  amount: string;
 };
 
 export type Recipe = {
@@ -8,9 +8,9 @@ export type Recipe = {
   title: string;
   overview?: string;
   image: string;
-  ingredients: IngredientQuantity[];
+  ingredients: Ingredient[];
   usedIngredients?: string[]; // those that matches the user input
-  cookingTime: number;
-  servings: number;
+  cookingTime?: number;
+  servings?: number;
   steps: string[];
 };

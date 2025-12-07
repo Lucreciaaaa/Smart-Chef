@@ -21,20 +21,40 @@ type Props = {
 };
 
 export default function RecipeCard({ recipe }: Props) {
-  const Lchips = ["spaghetti", "tomatoes", "olive oil"];
+  const demoChips = ["spaghetti", "tomatoes", "olive oil"];
 
   return (
-    <Card sx={{ maxWidth: "100%" }}>
+    <Card
+      sx={{
+        w: "100%",
+        maxWidth: { xs: 200, sm: 250, md: 300 },
+        borderRadius: 3,
+        boxShadow: 2,
+      }}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
-          height="200"
+          // TODO : Add height
           image={`http://localhost:3001/${recipe.image}`}
           alt={recipe.title}
+          sx={{ objectFit: "cover" }}
         />
         <CardContent>
           <Stack direction="column" gap={1}>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              gutterBottom
+              component="div"
+              variant="subtitle1"
+              sx={{
+                fontSize: {
+                  xs: "0.7rem",
+                  sm: "0.9rem",
+                  md: "1.1rem",
+                  lg: "1.2rem",
+                },
+              }}
+            >
               {recipe.title}
             </Typography>
             <Box
@@ -44,19 +64,23 @@ export default function RecipeCard({ recipe }: Props) {
               alignItems="center"
               gap={1.5}
             >
-              <Stack direction="row" gap={0.5}>
-                <AccessTimeIcon fontSize="small" sx={{ color: grey[600] }} />
-                <Typography variant="body1" color="text.secondary">
-                  {recipe.cookingTime} min
-                </Typography>
-              </Stack>
+              {recipe.cookingTime && (
+                <Stack direction="row" gap={0.5}>
+                  <AccessTimeIcon fontSize="small" sx={{ color: grey[600] }} />
+                  <Typography variant="body1" color="text.secondary">
+                    {recipe.cookingTime} min
+                  </Typography>
+                </Stack>
+              )}
 
-              <Stack direction="row" gap={0.5}>
-                <LocalDiningIcon fontSize="small" sx={{ color: grey[600] }} />
-                <Typography variant="body1" color="text.secondary">
-                  {recipe.servings} servings
-                </Typography>
-              </Stack>
+              {recipe.servings && (
+                <Stack direction="row" gap={0.5}>
+                  <LocalDiningIcon fontSize="small" sx={{ color: grey[600] }} />
+                  <Typography variant="body1" color="text.secondary">
+                    {recipe.servings} servings
+                  </Typography>
+                </Stack>
+              )}
             </Box>
 
             {recipe.overview && (
@@ -66,7 +90,7 @@ export default function RecipeCard({ recipe }: Props) {
             )}
 
             <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1 }}>
-              {Lchips.map((chip) => (
+              {demoChips.map((chip) => (
                 <Chip
                   key={chip}
                   label={chip}

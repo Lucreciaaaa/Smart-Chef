@@ -8,11 +8,27 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-const recipesPath = path.join(__dirname, "..", "data", "recipes.json");
+const recipesPath = path.join(
+  __dirname,
+  "..",
+  "data",
+  "processed",
+  "recipes.json"
+);
+console.log("Loading recipes from:", recipesPath);
 
 async function loadRecipes() {
   const file = await fs.readFile(recipesPath);
-  return JSON.parse(file.toString());
+  const data = JSON.parse(file.toString());
+
+  // recipe steps strings to recipe array string
+  return data.map((recipe: any) => ({
+    ...recipe,
+    steps:
+      typeof recipe.steps === "string"
+        ? recipe.steps.split("\n")
+        : recipe.steps,
+  }));
 }
 
 app.get("/recipes", async (req: Request, res: Response) => {
