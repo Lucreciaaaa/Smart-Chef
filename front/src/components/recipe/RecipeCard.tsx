@@ -7,6 +7,8 @@ import {
   Chip,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -21,6 +23,9 @@ type Props = {
 };
 
 export default function RecipeCard({ recipe }: Props) {
+  const theme = useTheme();
+  const isXS = useMediaQuery(theme.breakpoints.down("sm"));
+
   const recipeChips = recipe.usedIngredients;
 
   return (
@@ -35,10 +40,9 @@ export default function RecipeCard({ recipe }: Props) {
       <CardActionArea>
         <CardMedia
           component="img"
-          // TODO : Add height
           image={`http://localhost:3001/${recipe.image}`}
           alt={recipe.title}
-          sx={{ objectFit: "cover" }}
+          sx={{ objectFit: "cover", height: { xs: 150, sm: 180, md: 200 } }}
         />
         <CardContent>
           <Stack direction="column" gap={0.5}>
@@ -53,6 +57,10 @@ export default function RecipeCard({ recipe }: Props) {
                   md: "1.1rem",
                   lg: "1.2rem",
                 },
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
               }}
             >
               {recipe.title}
@@ -96,6 +104,7 @@ export default function RecipeCard({ recipe }: Props) {
                   label={chip}
                   color="secondary"
                   variant="outlined"
+                  size={isXS ? "small" : "medium"}
                 />
               ))}
             </Stack>
