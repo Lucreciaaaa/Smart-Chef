@@ -22,5 +22,9 @@ export function matchRecipes(
     };
   });
 
-  return scored.filter((r) => r.score > 0).sort((a, b) => b.score - a.score);
+  const finalRecipes = scored
+    .filter((r) => r.score >= 2) // at least 2 ingredients matching
+    .sort((a, b) => b.score - a.score);
+
+  return finalRecipes;
 }
