@@ -14,14 +14,14 @@ import LocalDiningIcon from "@mui/icons-material/LocalDining";
 
 import { grey } from "@mui/material/colors";
 
-import { Recipe } from "../../types/recipe";
+import { ScoredRecipe } from "../../types/recipe";
 
 type Props = {
-  recipe: Recipe;
+  recipe: ScoredRecipe;
 };
 
 export default function RecipeCard({ recipe }: Props) {
-  const demoChips = ["spaghetti", "tomatoes", "olive oil"];
+  const recipeChips = recipe.usedIngredients;
 
   return (
     <Card
@@ -41,7 +41,7 @@ export default function RecipeCard({ recipe }: Props) {
           sx={{ objectFit: "cover" }}
         />
         <CardContent>
-          <Stack direction="column" gap={1}>
+          <Stack direction="column" gap={0.5}>
             <Typography
               gutterBottom
               component="div"
@@ -90,7 +90,7 @@ export default function RecipeCard({ recipe }: Props) {
             )}
 
             <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1 }}>
-              {demoChips.map((chip) => (
+              {recipeChips?.map((chip) => (
                 <Chip
                   key={chip}
                   label={chip}

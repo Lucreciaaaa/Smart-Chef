@@ -14,3 +14,8 @@ export type Recipe = {
   servings?: number;
   steps: string[];
 };
+
+export interface ScoredRecipe extends Recipe {
+  usedIngredients?: string[];
+  score?: number;
+}

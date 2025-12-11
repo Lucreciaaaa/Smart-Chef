@@ -1,9 +1,21 @@
-import { useEffect, useState } from "react";
-import { Recipe } from "../types/recipe";
+import { useCallback, useEffect, useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setFilteredRecipes } from "../store/recipeSlice";
+import { RootState } from "../store/store";
+
+import { ScoredRecipe, Recipe } from "../types/recipe";
+
+import { matchRecipes } from "../utils/matchRecipes";
 
 export function useRecipes() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const ingredientList = useSelector(
+    (state: RootState) => state.ingredients.list,
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function load() {
@@ -15,9 +27,13 @@ export function useRecipes() {
         setLoading(false);
       }
     }
-
     load();
   }, []);
 
-  return { recipes, loading };
+  const searchRecipes = useCallback(() => {
+    const filtered: ScoredRecipe[] = matchRecipes(recipes, ingredientList);
+    dispatch(setFilteredRecipes(filtered));
+  }, [recipes, ingredientList, dispatch]);
+
+  return { recipes, loading, searchRecipes };
 }

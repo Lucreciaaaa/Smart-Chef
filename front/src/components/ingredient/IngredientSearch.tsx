@@ -10,7 +10,6 @@ import AddIcon from "@mui/icons-material/Add";
 import { useDispatch, useSelector } from "react-redux";
 import { addIngredient } from "../../store/ingredientSlice";
 import { RootState } from "../../store/store";
-import { setFilteredRecipes } from "../../store/recipeSlice";
 
 // constants
 import {
@@ -19,8 +18,6 @@ import {
   MAX_INPUT,
   MIN_INGREDIENTS,
 } from "../../utils/constants";
-
-import { matchRecipes } from "../../utils/matchRecipes";
 
 import { useRecipes } from "../../hooks/useRecipes";
 
@@ -43,7 +40,7 @@ export default function IngredientSearch() {
   const ingredientList = useSelector(
     (state: RootState) => state.ingredients.list,
   );
-  const { recipes } = useRecipes();
+  const { searchRecipes } = useRecipes();
 
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
@@ -66,8 +63,7 @@ export default function IngredientSearch() {
 
   // Search button
   const handleSearch = () => {
-    const filtered = matchRecipes(recipes, ingredientList);
-    dispatch(setFilteredRecipes(filtered));
+    searchRecipes();
   };
 
   // Update the input bar
