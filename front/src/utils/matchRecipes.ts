@@ -2,18 +2,22 @@ import { Recipe } from "../types/recipe";
 
 export function matchRecipes(
   recipes: Recipe[],
-  userIngredientsInputs: string[] = [],
+  userIngredientsInputs: string[] = []
 ) {
   const scored = recipes.map((recipe) => {
     // normalize recipe ingredients
     const recipeIngs = (recipe.ingredients || [])
       .filter((i) => i?.name)
-      .map((i) => i.name.toLowerCase().trim());
+      .map((i) => i.name.toLowerCase());
 
     // match
-    const usedIngredients = userIngredientsInputs.filter((ing) =>
-      recipeIngs.includes(ing),
-    );
+    const usedIngredients = userIngredientsInputs.filter((userIng) => {
+      const u = userIng.toLowerCase().trim();
+
+      return recipeIngs.some((r) => {
+        return r.includes(u) || u.includes(r);
+      });
+    });
 
     return {
       ...recipe,
