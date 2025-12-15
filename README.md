@@ -23,6 +23,13 @@ Smart Chef is perfect for :
 - **Curated Results** : Display up to **30** best-matched recipes.
 - **Intuitive UI** : Clean, responsive interface built with modern design principles.
 
+
+### Search Example
+<p align="center">
+<img width="1918" height="943" alt="image" src="https://github.com/user-attachments/assets/f8ba8de8-e109-472a-b0cb-3e08aa771f04" />
+</p>
+
+
 ## 🛠️ Tech Stack & Data Source
 
 | Category              | Technology / Tool         |
