@@ -2,7 +2,7 @@ import { Recipe } from "../types/recipe";
 
 export function matchRecipes(
   recipes: Recipe[],
-  userIngredientsInputs: string[] = []
+  userIngredientsInputs: string[] = [],
 ) {
   const scored = recipes.map((recipe) => {
     // normalize recipe ingredients

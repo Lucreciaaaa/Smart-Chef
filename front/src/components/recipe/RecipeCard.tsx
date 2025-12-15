@@ -18,6 +18,8 @@ import { grey } from "@mui/material/colors";
 
 import { ScoredRecipe } from "../../types/recipe";
 
+import { MAX_CARD_CHIPS } from "../../utils/constants";
+
 type Props = {
   recipe: ScoredRecipe;
 };
@@ -26,25 +28,39 @@ export default function RecipeCard({ recipe }: Props) {
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const recipeChips = recipe.usedIngredients;
+  const visibleChips = recipe.usedIngredients
+    ? recipe.usedIngredients.slice(0, MAX_CARD_CHIPS)
+    : [];
+  const hiddenChipsCount = recipe.usedIngredients
+    ? recipe.usedIngredients.length - visibleChips.length
+    : 0;
 
   return (
     <Card
       sx={{
-        w: "100%",
-        maxWidth: { xs: 200, sm: 250, md: 300 },
+        display: "flex",
+        width: "100%",
+        maxWidth: { xs: 220, sm: 280, md: 320 },
         borderRadius: 3,
         boxShadow: 2,
       }}
     >
-      <CardActionArea>
+      <CardActionArea
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "stretch",
+        }}
+      >
         <CardMedia
+          aria-label="Recipe Image"
           component="img"
           image={`http://localhost:3001/${recipe.image}`}
           alt={recipe.title}
           sx={{ objectFit: "cover", height: { xs: 150, sm: 180, md: 200 } }}
         />
-        <CardContent>
+        <CardContent sx={{ flexGrow: 1, display: "flex" }}>
           <Stack direction="column" gap={0.5}>
             <Typography
               gutterBottom
@@ -61,6 +77,8 @@ export default function RecipeCard({ recipe }: Props) {
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
+                minHeight: "2.8em",
+                lineHeight: 1.4,
               }}
             >
               {recipe.title}
@@ -97,8 +115,11 @@ export default function RecipeCard({ recipe }: Props) {
               </Typography>
             )}
 
-            <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1 }}>
-              {recipeChips?.map((chip) => (
+            <Stack
+              direction="row"
+              sx={{ flexWrap: "wrap", gap: 1, mt: 1.5, pt: 0.5 }}
+            >
+              {visibleChips.map((chip) => (
                 <Chip
                   key={chip}
                   label={chip}
@@ -107,6 +128,18 @@ export default function RecipeCard({ recipe }: Props) {
                   size={isXS ? "small" : "medium"}
                 />
               ))}
+
+              {hiddenChipsCount > 0 && (
+                <Chip
+                  // TODO : add button >> tooltip
+                  label={`+${hiddenChipsCount}`}
+                  size={isXS ? "small" : "medium"}
+                  sx={{
+                    fontWeight: 500,
+                    opacity: 0.7,
+                  }}
+                ></Chip>
+              )}
             </Stack>
           </Stack>
         </CardContent>
