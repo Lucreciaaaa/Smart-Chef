@@ -1,3 +1,4 @@
+// MUI
 import {
   Box,
   Card,
@@ -6,19 +7,18 @@ import {
   CardMedia,
   Chip,
   Stack,
-  Tooltip,
   Typography,
   useMediaQuery,
 } from "@mui/material";
-
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
-
 import { grey } from "@mui/material/colors";
 
 import { ScoredRecipe } from "../../../types/recipe";
 
 import { MAX_CARD_CHIPS } from "../../../utils/constants";
+
+import LightTooltip from "../../custom/LightTooltip";
 
 type Props = {
   recipe: ScoredRecipe;
@@ -131,7 +131,7 @@ export default function RecipeCard({ recipe }: Props) {
                 />
               ))}
               {hiddenChipsCount > 0 && (
-                <Tooltip title={tooltipTitle} placement="right" arrow>
+                <LightTooltip title={tooltipTitle} placement="right" arrow>
                   <Chip
                     label={`+${hiddenChipsCount}`}
                     variant="filled"
@@ -140,7 +140,7 @@ export default function RecipeCard({ recipe }: Props) {
                       opacity: 0.6,
                     }}
                   ></Chip>
-                </Tooltip>
+                </LightTooltip>
               )}
             </Stack>
           </Stack>
