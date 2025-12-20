@@ -1,5 +1,5 @@
 // components
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import RecipeCard from "./RecipeCard";
 
 // Redux
@@ -13,14 +13,21 @@ import { MAX_RECIPES } from "../../../utils/constants";
 
 export default function RecipesContainer() {
   const { loading } = useRecipes();
-  const foundRecipes = useSelector(
-    (state: RootState) => state.recipes.filtered,
+
+  const { filtered, hasSearched } = useSelector(
+    (state: RootState) => state.recipes
   );
 
-  // TODO : replace by MUI components
-  if (loading) return <p>Loading…</p>;
-  if (!foundRecipes.length) return <p>No recipes found.</p>;
+  if (loading) {
+    return <Typography>Loading…</Typography>;
+  }
+  if (!hasSearched) {
+    return null;
+  }
 
+  if (filtered.length === 0) {
+    return <Typography>No recipes found.</Typography>;
+  }
   return (
     <Box
       sx={{
@@ -29,7 +36,7 @@ export default function RecipesContainer() {
         gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
       }}
     >
-      {foundRecipes.slice(0, MAX_RECIPES).map((recipe) => (
+      {filtered.slice(0, MAX_RECIPES).map((recipe) => (
         <RecipeCard key={recipe.id} recipe={recipe} />
       ))}
     </Box>

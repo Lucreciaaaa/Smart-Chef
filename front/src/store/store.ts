@@ -9,7 +9,7 @@ import recipeReducer from "./recipeSlice";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["ingredients"],
+  whitelist: ["ingredients", "recipes"],
 };
 
 const rootReducer = combineReducers({

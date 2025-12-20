@@ -23,8 +23,12 @@ const ingredientsSlice = createSlice({
         (item) => item !== action.payload.toLowerCase(),
       );
     },
+    resetIngredients: (state) => {
+      state.list = [];
+    },
   },
 });
 
-export const { addIngredient, removeIngredient } = ingredientsSlice.actions;
+export const { addIngredient, removeIngredient, resetIngredients } =
+  ingredientsSlice.actions;
 export default ingredientsSlice.reducer;
