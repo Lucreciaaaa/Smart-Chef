@@ -32,7 +32,7 @@ SmartChef is a **single-page application** that helps you discover recipes based
 ## 🎬 Quick preview
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/b5fbcdb1-dc09-425d-a1f7-573a7c47e0ab" alt="SmartChef Quick Preview" width="100%" />
+<img src="https://github.com/user-attachments/assets/a44d7d40-4f75-4f66-8b63-f1f4d8926b16" alt="SmartChef Quick Preview" width="100%" />
 </p>
 
 
