@@ -14,7 +14,7 @@ import { MAX_RECIPES } from "../../utils/constants";
 import logo from "../../assets/logo.png";
 
 import { blue } from "@mui/material/colors";
-import RecipeModal from "./modal/RecipeModal";
+import RecipeDialog from "./details/RecipeDialog";
 import { ScoredRecipe } from "../../types/recipe";
 
 const CenterBox = ({ children }: { children: React.ReactNode }) => (
@@ -119,7 +119,7 @@ export default function RecipesContainer() {
         />
       ))}
 
-      <RecipeModal
+      <RecipeDialog
         open={openModal}
         onClose={handleCloseModal}
         selectedRecipe={selectedRecipe}
