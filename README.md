@@ -1,44 +1,60 @@
-# SmartChef, Your Personal Recipe Explorer
+# SmartChef - Your Personal Recipe Explorer
 
 <p align="center">
   <img src="front/src/assets/logo.png" alt="SmartChef Logo" width="150"/>
 </p>
 
-## Overview
-
-**SmartChef** is a web-based application (SPA) that helps you discover new recipes using only the ingredients you have at home.
-
-SmartChef is designed to make cooking **fun, creative, and effortless**. Instead of wondering what to make for your next meal, simply enter a few ingredients and get a curated list of recipes that you can prepare right away.
-
-Smart Chef is perfect for :
-
-- Home cookers who enjoy **exploring new dishes**
-- Curious food enthusiasts looking to **experiment with what’s in the fridge**
-- Anyone who wants to **make the most out of their ingredients** and reduce food waste
-
-## Key Features
-
-- **Intelligent Search** : Find recipes by matching the ingredients you input against a rich dataset.
-- **Scoring System** : Recipes are prioritized based on the number of matching ingredients.
-- **Curated Results** : Display up to **30** best-matched recipes.
-- **Intuitive UI** : Clean, responsive interface built with modern design principles.
-
-
-### Search Example
 <p align="center">
- <img width="1916" height="943" alt="image" src="https://github.com/user-attachments/assets/4f7e18e5-952e-4544-9f73-cf1c9c7a49f6" />
+  <em>Transform your everyday ingredients into delicious meals</em>
 </p>
 
+---
+## 📖 Overview
 
-## 🛠️ Tech Stack & Data Source
+SmartChef is a **single-page application** that helps you discover recipes based on ingredients you already have at home. No more wondering what to cook or wasting food in your fridge—simply input what you have, and SmartChef will find the best recipes for you.
 
-| Category              | Technology / Tool         |
-| :-------------------- | :------------------------ |
-| **Front-end Library** | **React**                 |
-| **State Management**  | **Redux**                 |
-| **Design System**     | **Material Design (MUI)** |
-| **Data Source**       | **Kaggle**                |
+### 🎯 Why SmartChef?
+
+- **Reduce food waste**: Use ingredients before they expire
+- **Save time**: No need to plan grocery shopping for every meal
+- **Discover new recipes**: Get creative with what you already own
+- **Smart matching**: Intelligent scoring system ranks recipes by relevance
+
+## ✨ Key Features
+
+* **🔍 Smart Search**: Finds recipes using 3 to 10 ingredients with fuzzy matching support.
+* **📊 Dynamic Scoring**: 0-100% relevance score based on an 80% coverage ratio.
+* **⚖️ Smart Filtering**: Shows top 30 results with a minimum of 2 matching ingredients.
+* **🚦 Visual Feedback**: Color-coded badges (Excellent/Good/Partial) and progress bars.
+* **📖 Full Guides**: Step-by-step instructions, images, and precise quantities.
+
+
+## 🎬 Demo
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/20646e67-b63d-4ff5-b401-6cc66b5cbcf8" alt="SmartChef Demo" width="800"/>
+</p>
+
+*Click the image to view the demo*>
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|----------|-----------|
+| **Frontend Framework** | React 18 + TypeScript |
+| **State Management** | Redux Toolkit |
+| **UI Library** | Material-UI (MUI) |
+| **Styling** | Emotion (CSS-in-JS) |
+| **Backend** | Node.js + Express |
+| **Data Source** | Kaggle Dataset |
 
 **Dataset :** [Food Ingredients and Recipe Dataset with Images](https://www.kaggle.com/datasets/pes12017000148/food-ingredients-and-recipe-dataset-with-images)
 
 ---
+## 📬 Contact
+
+Questions or suggestions? Feel free to reach out at : [lfodouop@gmail.com](mailto:lfodouop@gmail.com).
+
+Thank you for taking the time to explore **SmartChef** ! 🍳
