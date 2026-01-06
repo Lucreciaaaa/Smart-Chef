@@ -15,9 +15,11 @@ import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import { grey } from "@mui/material/colors";
 
 import { ScoredRecipe } from "../../../types/recipe";
-import { MAX_CARD_CHIPS } from "../../../utils/constants";
+import { API_URL, MAX_CARD_CHIPS } from "../../../utils/constants";
 
 import LightTooltip from "../../custom/LightTooltip";
+
+import logo from "../../../assets/logo.png";
 
 type Props = {
   recipe: ScoredRecipe;
@@ -29,6 +31,8 @@ export default function RecipeCard({ recipe: r, onSelectRecipe }: Props) {
 
   const { usedIngredients, id, title, image, cookingTime, servings, overview } =
     r;
+
+  const imageSrc = image ? `${API_URL}/${image}` : logo;
 
   const ingredients = usedIngredients ?? [];
   const visibleChips = ingredients.slice(0, MAX_CARD_CHIPS);
@@ -58,9 +62,15 @@ export default function RecipeCard({ recipe: r, onSelectRecipe }: Props) {
       >
         <CardMedia
           component="img"
-          image={`http://localhost:3001/${image}`}
-          alt={title}
-          sx={{ objectFit: "cover", height: { xs: 150, sm: 180, md: 200 } }}
+          image={imageSrc}
+          alt={image ? title : "No image available"}
+          sx={{
+            objectFit: "cover",
+            height: { xs: 150, sm: 180, md: 200 },
+            //opacity: image ? 1 : 0.15,
+            filter: image ? "none" : "grayscale(100%)",
+            bgcolor: image ? "transparent" : grey[300],
+          }}
         />
         <CardContent sx={{ flexGrow: 1, display: "flex" }}>
           <Stack direction="column" gap={0.5}>

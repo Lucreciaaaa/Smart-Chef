@@ -1,3 +1,4 @@
+// Components
 import {
   Box,
   IconButton,
@@ -10,6 +11,7 @@ import {
   LinearProgress,
 } from "@mui/material";
 
+// Icons
 import CloseIcon from "@mui/icons-material/Close";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 
@@ -84,7 +86,11 @@ export default function RecipeDialog({
             <Box
               component="img"
               src={`http://localhost:3001/${selectedRecipe.image}`}
-              alt={selectedRecipe.title}
+              alt={
+                selectedRecipe.image
+                  ? selectedRecipe.title
+                  : "No image available"
+              }
               sx={{
                 width: "100%",
                 height: 200,
