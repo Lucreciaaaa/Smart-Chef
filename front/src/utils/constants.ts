@@ -1,4 +1,8 @@
-export const API_URL = "https://smart-chef-back.onrender.com";
+const isLocalhost = window.location.hostname === "localhost";
+
+export const API_URL = isLocalhost
+  ? "http://localhost:3001"
+  : "https://smart-chef-back.onrender.com"; // render
 
 export const MIN_INGREDIENTS = 3;
 export const MAX_INGREDIENTS = 10;

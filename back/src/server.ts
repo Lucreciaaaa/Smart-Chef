@@ -1,35 +1,43 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import path from "path";
-import fs from "fs/promises";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(
   cors({
-    origin: "https://smart-chef-ton-nom.vercel.app",
+    origin: ["https://smart-chef-rho.vercel.app", "http://localhost:3000"],
   })
 );
 
-app.use(express.static(path.join(__dirname, "..", "public")));
-
-const recipesPath = path.join(
-  __dirname,
-  "..",
-  "data",
-  "processed",
-  "recipes.json"
-);
-console.log("Loading recipes from:", recipesPath);
-
 async function loadRecipes() {
-  const file = await fs.readFile(recipesPath);
-  const data = JSON.parse(file.toString());
+  const GITHUB_ASSET_URL = process.env.GITHUB_ASSET_URL;
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME; // Cloudinary
 
-  // recipe steps strings to recipe array string
+  if (!GITHUB_ASSET_URL) {
+    throw new Error("GITHUB_ASSET_URL missing in env variables");
+  }
+
+  const response = await fetch(GITHUB_ASSET_URL);
+
+  if (!response.ok) {
+    throw new Error(`GitHub API responds with status : ${response.status}`);
+  }
+
+  const data = await response.json();
+
   return data.map((recipe: any) => ({
     ...recipe,
+
+    image: recipe.image
+      ? `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/FoodImages/${path.basename(
+          recipe.image
+        )}`
+      : null,
     steps:
       typeof recipe.steps === "string"
         ? recipe.steps.split("\n")
