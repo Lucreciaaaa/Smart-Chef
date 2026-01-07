@@ -89,4 +89,4 @@ Thank you for taking the time to explore **SmartChef**! 🍳
 >
 > The current implementation prioritizes a seamless user experience, focusing on intuitive ingredient input, real-time relevance scoring, and visual feedback. To maintain this focus on core usability, some secondary features such as multi-language support or advanced dietary filtering remain intentionally limited in this version.
 >
-> From a broader perspective, the project demonstrates how a functional foundation can be extended in multiple directions, whether through richer data, improved content validation, internationalization, or additional user-oriented features.
+> From a broader perspective, the project can be extended in multiple directions, whether through richer data, improved content validation, internationalization, or additional user-oriented features.
