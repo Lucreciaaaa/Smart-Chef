@@ -5,29 +5,10 @@
 </p>
 
 <p align="center">
-  <em>Transform your everyday ingredients into delicious meals</em>
+  <em>TTransform your everyday ingredients into delicious meals.</em>
 </p>
 
 ---
-
-## 📖 Overview
-
-SmartChef is a **single-page application** that helps you discover recipes based on ingredients you already have at home. No more wondering what to cook or wasting food in your fridge: simply input what you have and SmartChef will find the best recipes for you.
-
-### 🎯 Why SmartChef?
-
-- **Reduce food waste**: use ingredients before they expire
-- **Save time**: no need to plan grocery shopping for every meal
-- **Discover new recipes**: get creative with what you already own
-- **Smart matching**: intelligent scoring system ranks recipes by relevance
-
-## ✨ Key Features
-
-- **🔍 Smart Search**: finds recipes using 3 to 10 ingredients with fuzzy matching support.
-- **📊 Dynamic Scoring**: 0-100% relevance score representing the percentage of matching ingredients relative to the user's input, optimized by an 80% coverage ratio. Ensures recipes with many ingredients aren't unfairly penalized.
-- **⚖️ Smart Filtering**: shows top 30 results with a minimum of 2 matching ingredients.
-- **🚦 Visual Feedback**: color-coded badges (Excellent/Good/Partial) and progress bars.
-- **📖 Full Guides**: step-by-step instructions, images, and precise quantities.
 
 ## 🎬 Quick Preview
 
@@ -35,58 +16,141 @@ SmartChef is a **single-page application** that helps you discover recipes based
   <img src="https://github.com/user-attachments/assets/a44d7d40-4f75-4f66-8b63-f1f4d8926b16" alt="SmartChef Quick Preview" width="100%" />
 </p>
 
+## 📖 Overview
+
+SmartChef is a **recipe discovery application** designed to help users decide _what to cook_ based on the ingredients they already have at home.
+
+Instead of browsing endless recipes or planning meals around shopping lists, SmartChef focuses on a simple question:
+
+> **“What can I cook right now?”**
+
+By combining ingredient-based search, fuzzy matching, and a relevance scoring system, SmartChef surfaces the most realistic and useful recipes.
+
 ---
+
+## 🎯 Why SmartChef?
+
+- 🥕 **Reduce food waste**: use ingredients before they expire
+- ⏱️ **Save time**: skip unnecessary planning
+- 🍽️ **Discover new recipes**: explore dishes you wouldn't normally search for
+- 🧠 **Get smart results**: recipes ranked by actual relevance
+
+---
+
+## ✨ Core Features
+
+- **🔍 Ingredient-based search**  
+  Search recipes using **3 to 10 ingredients**, with tolerance for typos and variations.
+
+- **🧠 Fuzzy matching & normalization**  
+  Ingredient names are matched intelligently.
+
+- **📊 Relevance scoring (0–100%)**  
+  Recipes are ranked using a custom scoring algorithm that balances:
+
+  - ingredient coverage
+  - recipe complexity
+  - fairness toward recipes with longer ingredient lists
+
+- **⚖️ Smart filtering**
+
+  - Top 30 most relevant results
+  - Minimum of 2 matching ingredients
+
+- **🎨 Visual clarity**  
+  Color-coded relevance badges and progress indicators for quick decision-making.
+
+- **📖 Detailed recipe view**  
+  Step-by-step instructions, quantities and images.
+
+---
+
 
 ## 🛠️ Tech Stack
 
-| Category             | Technology                          |
-| :------------------- | :---------------------------------- |
-| **Frontend**         | React (TypeScript)                  |
-| **State Management** | Redux Toolkit                       |
-| **UI Library**       | Material-UI (MUI)                   |
-| **Styling**          | Emotion (CSS-in-JS)                 |
-| **Backend**          | Node.js, Express                    |
-| **CI**               | Github Actions                      |
-| **Cloud**            | Cloudinary (images)                 |
-| **Deployment**       | Vercel (Frontend), Render (Backend) |
-| **Code Quality**     | Husky, ESLint, Prettier             |
+### 🎨 Frontend
 
-**Data Source:** [Food Ingredients and Recipe Dataset with Images](https://www.kaggle.com/datasets/pes12017000148/food-ingredients-and-recipe-dataset-with-images)
+- **React + TypeScript**  
+  Strongly typed data models ensure consistency across recipes, ingredients, and scoring logic.
+
+- **Redux Toolkit**  
+  Centralized state management for search inputs, results, and UI state, following scalable frontend patterns.
+
+- **Material UI (MUI)**  
+  Provides an accessible and consistent design system with responsive layouts and theming.
+
+- **Emotion**  
+  Used for fine-grained component customization alongside MUI.
+
+### ⚙️ Backend & Tooling
+
+- **Node.js / Express**, lightweight API layer
+- **Cloudinary**, optimized image hosting
+- **GitHub Actions**, basic CI workflows
+- **ESLint / Prettier / Husky**, code quality and consistency
+- **Deployment** : Vercel (frontend), Render (backend)
+
+**Data source:**  
+[Food Ingredients and Recipe Dataset with Images (Kaggle)](https://www.kaggle.com/datasets/pes12017000148/food-ingredients-and-recipe-dataset-with-images)
 
 ---
 
-## 🤖 Behind the Scenes: NLP-Powered Ingredient Extraction
+## 🤖 Behind the Scenes : Ingredient Intelligence
 
-SmartChef uses **Named Entity Recognition (NER)** to intelligently parse recipe ingredients:
+SmartChef relies on **NLP-based ingredient extraction** to improve matching quality:
 
-- **CRF Model** (Conditional Random Fields) trained to extract ingredient names from raw text
-- **Fuzzy Matching** (RapidFuzz) to handle typos and variations (e.g., "tomatoe" → "tomato")
-- **Image Association**: automated matching between recipes and images using token-based similarity scoring
+- **Named Entity Recognition (NER)**  
+  A CRF (Conditional Random Fields) model extracts ingredient names from raw recipe text.
+
+- **Fuzzy Matching (RapidFuzz)**  
+  Handles spelling errors and semantic variations.
+
+- **Automated image association**  
+  Recipes and images are matched using token-based similarity scoring.
+
+This preprocessing step ensures cleaner data and more reliable search results.
+
+---
+
+## 🧪 Testing
+
+Basic unit tests were implemented using **Jest** and **React Testing Library** to validate component rendering.
+
+More advanced UI testing (complex dialogs and search logic) is a natural extension for future iterations.
+
+---
+
+## ⚠️ Trade-offs & Design Decisions
+
+- The backend remains intentionally lightweight to keep the focus on **frontend architecture and user experience**.
+- Some dataset inconsistencies (quantities, metadata) reflect source data limitations rather than application logic.
+- Advanced features such as dietary filters or internationalization were deferred to preserve clarity and performance in the core experience.
+
+These choices reflect strategic prioritization, they represent a balance between adding features and maintaining a solid architecture.
+
+---
+
+## 🧠 My Approach & Takeaways
+
+Building SmartChef highlighted several important engineering considerations:
+
+- **Designing relevance over raw matching**  
+  Developed a scoring system that accounts for recipe complexity and ingredient coverage, allowing users to quickly understand how well a recipe matches their available ingredients, even when recipes vary in the number of ingredients.
+
+- **Managing global and local state**  
+  Gained hands-on experience with Redux Toolkit for global state management, while using React hooks (especially `useState`) for local UI state, reinforcing patterns for predictable and maintainable component behavior.
+
+- **Working with imperfect real-world data**  
+  Handled real-world dataset imperfections through parsing, normalization and structured storage, including associating images with recipes and formatting recipe objects for predictable frontend use.
+
+- **UX-driven architecture decisions**  
+  Visual feedback (badges, progress indicators, filtering) directly influenced component structure and data flow, reinforcing the importance of designing UI and logic together.
 
 ---
 
 ## 📬 Contact
 
-**Lucrece Fodouop**
+**Lucrece Fodouop**  
+📧 [lfodouop@gmail.com](mailto:lfodouop@gmail.com)
 
-Any questions or suggestions? Feel free to reach me at: [lfodouop@gmail.com](mailto:lfodouop@gmail.com).
-
-Thank you for taking the time to explore **SmartChef**! 🍳
-
----
-
----
-
-> [!NOTE]
->
-> ### 🔍 Limitations & Perspectives
->
-> SmartChef is a functional application.  
-> However, as a data-driven project, it comes with certain limitations that are important to acknowledge.
->
-> The application relies on an external recipe dataset, which introduces constraints in terms of data quality and structure.  
-> Some recipes may contain minor inconsistencies, parsing imperfections, or missing information (e.g. imprecise quantities, cooking times, or servings). These limitations are inherent to the source data rather than the application logic itself.
->
-> The current implementation prioritizes a seamless user experience, focusing on intuitive ingredient input, real-time relevance scoring, and visual feedback. To maintain this focus on core usability, some secondary features such as multi-language support or advanced dietary filtering remain intentionally limited in this version.
->
-> From a broader perspective, the project can be extended in multiple directions, whether through richer data, improved content validation, internationalization, or additional user-oriented features.
+Thanks for taking the time to explore **SmartChef** 🍳
