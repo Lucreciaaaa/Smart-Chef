@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <em>TTransform your everyday ingredients into delicious meals.</em>
+  <em>Transform your everyday ingredients into delicious meals.</em>
 </p>
 
 ---
