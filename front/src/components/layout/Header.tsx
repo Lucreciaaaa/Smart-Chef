@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-on-dark.png";
 
 const Header = () => {
   return (

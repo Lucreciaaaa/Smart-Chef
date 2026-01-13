@@ -11,7 +11,7 @@ import { useState } from "react"; // (react)
 import { useRecipes } from "../../hooks/useRecipes";
 
 import { MAX_RECIPES } from "../../utils/constants";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-on-dark.png";
 
 import { blue } from "@mui/material/colors";
 import RecipeDialog from "./details/RecipeDialog";
@@ -36,11 +36,11 @@ const CenterBox = ({ children }: { children: React.ReactNode }) => (
 export default function RecipesContainer() {
   const { loading } = useRecipes();
   const { filtered, hasSearched } = useSelector(
-    (state: RootState) => state.recipes,
+    (state: RootState) => state.recipes
   );
   const [openModal, setOpenModal] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState<ScoredRecipe | null>(
-    null,
+    null
   );
 
   const handleSelectRecipe = (recipe: ScoredRecipe) => {

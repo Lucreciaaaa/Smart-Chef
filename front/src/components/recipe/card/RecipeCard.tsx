@@ -19,7 +19,7 @@ import { MAX_CARD_CHIPS } from "../../../utils/constants";
 
 import LightTooltip from "../../custom/LightTooltip";
 
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/logo-on-dark.png";
 
 type Props = {
   recipe: ScoredRecipe;
