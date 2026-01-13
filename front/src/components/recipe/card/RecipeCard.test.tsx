@@ -23,7 +23,7 @@ test("renders RecipeCard without crashing", () => {
   render(
     <ThemeProvider theme={theme}>
       <RecipeCard recipe={fakeRecipe} onSelectRecipe={() => {}} />
-    </ThemeProvider>
+    </ThemeProvider>,
   );
   const recipeTitle = screen.getByText("Test Recipe");
   expect(recipeTitle).toBeInTheDocument();

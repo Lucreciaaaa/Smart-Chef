@@ -24,7 +24,7 @@ test("renders IngredientChip without crashing", () => {
       <ThemeProvider theme={theme}>
         <IngredientChip />
       </ThemeProvider>
-    </Provider>
+    </Provider>,
   );
   const tomatoChip = screen.getByText("tomato");
   const cheeseChip = screen.getByText("cheese");

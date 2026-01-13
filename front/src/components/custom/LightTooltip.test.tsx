@@ -10,7 +10,7 @@ it("should display a text on hover", async () => {
       <LightTooltip title="Helper">
         <button>Test Button</button>
       </LightTooltip>
-    </ThemeProvider>
+    </ThemeProvider>,
   );
 
   const myButton = screen.getByText("Test Button");
