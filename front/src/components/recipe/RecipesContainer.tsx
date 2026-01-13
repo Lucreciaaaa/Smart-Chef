@@ -36,11 +36,11 @@ const CenterBox = ({ children }: { children: React.ReactNode }) => (
 export default function RecipesContainer() {
   const { loading } = useRecipes();
   const { filtered, hasSearched } = useSelector(
-    (state: RootState) => state.recipes
+    (state: RootState) => state.recipes,
   );
   const [openModal, setOpenModal] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState<ScoredRecipe | null>(
-    null
+    null,
   );
 
   const handleSelectRecipe = (recipe: ScoredRecipe) => {
