@@ -1,7 +1,16 @@
 # SmartChef, Your Personal Recipe Explorer
 
 <p align="center">
-  <img src="front/src/assets/logo.png" alt="SmartChef Logo" width="150"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="front/src/assets/logo-on-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="front/src/assets/logo-on-light.jpg">
+  <img
+    src="front/src/assets/logo-on-dark.png"
+    alt="SmartChef Logo"
+    width="150"
+  />
+</picture>
+
 </p>
 
 <p align="center">
@@ -64,7 +73,6 @@ By combining ingredient-based search, fuzzy matching, and a relevance scoring sy
   Step-by-step instructions, quantities and images.
 
 ---
-
 
 ## 🛠️ Tech Stack
 
